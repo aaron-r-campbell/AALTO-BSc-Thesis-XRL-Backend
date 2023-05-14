@@ -1,0 +1,30 @@
+html {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+    margin: 0;
+}
+
+.inner {
+  margin: 0.5vw 1vw;
+}
+
+.innerCol {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.5vw;
+  gap: 1vw;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

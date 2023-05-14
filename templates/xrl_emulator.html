@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    {% for elem in head_list %}
+    <!-- Head -->
+    {{ elem.prettify()|safe }}
+    {% endfor %}
+    {% for elem in style_list %}
+    <!-- Style -->
+    {{ elem.prettify()|safe }}
+    {% endfor %}
+    <style>
+        .XRL-container {
+            max-width: 1500px;
+            max-height: 1000px;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body style="overflow-x: scroll; margin: 1rem; position: absolute; left: 0;">
+    <div style="display: flex; flex-direction: column; row-gap: 1rem;">
+        <div style="display: flex; column-gap: 1rem;">
+            {% for elem in xrl_head %}
+            <div id="XRL-demo-head" class="XRL-container" style="display: flex; column-gap: 1rem;">
+                {{ elem.prettify()|safe }}
+            </div>
+            {% endfor %}
+        </div>
+        <div style="display: flex; column-gap: 1rem;">
+            <div id="XRL-demo-left" style="display: flex; flex-direction: row-reverse; column-gap: 1rem;">
+                {% for elem in xrl_left %}
+                <!-- XRL-left -->
+                <div class="XRL-container">
+                    {{ elem.prettify()|safe }}
+                </div>
+                {% endfor %}
+            </div>
+            <div style="display: flex; flex-direction: column; row-gap: 1rem;">
+                <div id="XRL-demo-main">
+                    {% for elem in xrl_main %}
+                    <!-- XRL-main -->
+                    <div class="XRL-container">
+                        {{ elem.prettify()|safe }}
+                    </div>
+                    {% endfor %}
+                </div>
+                <div id="XRL-demo-below" style="display: flex; flex-direction: column; row-gap: 1rem;">
+                    {% for elem in xrl_below %}
+                    <!-- XRL-below -->
+                    <div class="XRL-container">
+                        {{ elem.prettify()|safe }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div id="XRL-demo-right" style="display: flex; column-gap: 1rem;">
+                {% for elem in xrl_right %}
+                <div class="XRL-container">
+                    {{ elem.prettify()|safe }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+<footer>
+    {% for elem in footer_list %}
+    <!-- Footer -->
+    {{ elem.prettify()|safe }}
+    {% endfor %}
+    {% for elem in script_list %}
+    <!-- Script -->
+    {{ elem.prettify()|safe }}
+    {% endfor %}
+</footer>
+<script>
+    document.body.style.transform = "scale(0.5)";
+    document.body.style.transformOrigin = "0 0";
+
+    const left = document.getElementById("XRL-demo-left");
+    const head = document.getElementById("XRL-demo-head");
+    const main = document.getElementById("XRL-demo-main");
+    const below = document.getElementById("XRL-demo-below");
+
+    // Create the XRL-demo-head-spacer element with the same width as XRL-demo-left
+    const spacer = document.createElement("div");
+    spacer.id = "XRL-demo-head-spacer";
+    spacer.style.width = window.getComputedStyle(left).width;
+
+    // Prepend the spacer element to the head element
+    head.parentNode.insertBefore(spacer, head.parentNode.firstChild);
+
+    // set head width
+    head.style.maxWidth = window.getComputedStyle(main).width >= window.getComputedStyle(below).width ? window.getComputedStyle(main).width : window.getComputedStyle(below).width;
+
+    // Create a ResizeObserver instance to observe changes in the left element's size
+    const resizeObserver = new ResizeObserver(entries => {
+        for (const entry of entries) {
+            if (entry.target === left) {
+                spacer.style.width = window.getComputedStyle(left).width;
+            }
+            if (entry.target === main || entry.target === below) {
+                head.style.maxWidth = window.getComputedStyle(main).width >= window.getComputedStyle(below).width ? window.getComputedStyle(main).width : window.getComputedStyle(below).width;
+            }
+        }
+    });
+
+    // Start observing changes in size
+    resizeObserver.observe(left);
+    resizeObserver.observe(head);
+    resizeObserver.observe(below);
+</script>
+
+</html>

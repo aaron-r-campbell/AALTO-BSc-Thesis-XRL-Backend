@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>XRL Demo | Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="XRL-element">
+    <div id="content" style="display: flex; flex-direction: column; padding-bottom: 1vw;">
+        <div alt="header" class="XRL-head " style="width: 93.5vw; height: 5vw; background-color: var(--color1);">
+        </div>
+        <div style=" display: flex; flex-direction: column;">
+            <div style="display: flex; justify-content: space-evenly;">
+                <div id="controls" class="XRL-left innerCol"></div>
+                <div class="innerCol">
+                    <div id="results" class="XRL-main innerCol" style="padding-top: 0;"></div>
+                    <div style="width: 60vw; height: 8vw; overflow-x:scroll;">
+                        <div id="related" class="XRL-right innerCol" style="flex-direction: row;padding-top: 0;">
+                        </div>
+                    </div>
+                    <div alt="suggestions" class="XRL-below " style="height: 5vw; background-color: var(--color3);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function add_elements() {
+        fill_list('controls', 10, '<div alt="control ', '" class="" style="width: 20vw; height: 5vw; background-color: var(--color4);"></div>');
+        fill_list('related', 10, '<div alt="similar item ', '" class="" style="width: 20vw; height: 8vw; flex-shrink: 0; background-color: var(--color5);"></div>');
+        fill_list('results', 6, '<div alt="result ', '" class="" style="width: 60vw; height: 10vw; background-color: var(--color6);"></div>');
+    }
+</script>
+<script src="thesis.js"></script>
+
+</html>

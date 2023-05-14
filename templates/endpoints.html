@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>XRL Demo | Endpoints</title>
+    <style>
+        body {
+            margin: 5% auto;
+            padding: 0 10px;
+            max-width: 800px;
+            background: #f2f2f2;
+            color: #444;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+            text-shadow: 0 1px 0 #ffffff;
+        }
+
+        a {
+            border-bottom: 1px solid #444;
+            color: #444;
+            text-decoration: none;
+        }
+
+        a:hover {
+            border-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Available Endpoints</h1>
+    {% for endpoint in endpoints %}
+    <pre><a href="{{ base_url }}{{ endpoint[0] }}">{{ endpoint[1] }}</a>:
+    {{ endpoint[2] }}</pre>
+    {% endfor %}
+    <h1>Example Sites</h1>
+    The following example sites demonstrate the capabilities and versatility of the XRL framework based on real-world
+    web designs:
+    {% for site in example_sites %}
+    <pre><a href="{{ base_url }}{{ site[1] }}">/{{ site[0] }}</a> | <a href="{{ base_url }}{{ site[2] }}">/xrl/{{ site[0] }}</a></pre>
+    {% endfor %}
+    <h1>Custom Sites</h1>
+    Custom sites are used within the XRL framework XR demo application available <a href="TODO LINK">here</a>. The sites
+    can be updates using the format {{base_url}}custom/&ltNUM&gt?url=&ltURL&gt which sets site number 'NUM' to 'URL'.
+    The following custom sites are currently set:
+    {% for site in custom_sites %}
+    <pre><a href="{{ base_url }}{{ site[1] }}">{{ site[0] }}</a> | <a href="{{ base_url }}{{ site[2] }}">/{{ site[2] }}</a></pre>
+    {% endfor %}
+</body>
+
+</html>

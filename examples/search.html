@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>XRL Demo | Search</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="XRL-element">
+    <div id="content" style="display: flex; flex-direction: column; row-gap: 1vw;">
+        <div alt="header" onclick="{state = (state + 1) % 3; switch_page(state);}" class="XRL-head"
+            style="width: 93.5vw; height: 5vw; background-color: var(--color1);">
+        </div>
+        <!-- Links page -->
+        <div id="webResults" style="display: flex; justify-content: space-between; column-gap: 1vw;">
+            <div style="width: 65vw; display: flex; flex-direction: column-reverse; row-gap: 1vw;">
+                <div id="suggested" class="XRL-below innerCol"
+                    style="flex-direction: row; flex-wrap: wrap; justify-content: space-evenly;">
+                </div>
+                <div id="results" class="XRL-main innerCol"></div>
+            </div>
+            <div alt="info" class="XRL-left "
+                style="width: 27.5vw; height: 64vw; margin-top: 0.5vw; background-color: var(--color3);"></div>
+        </div>
+        <div id="imageResults" style="display: none; width: 93.5vw;">
+            <div id="imageWrapper" class="XRL-right innerCol"
+                style="min-width: 50vw; justify-content: center; flex-direction: row; flex-wrap: wrap;">
+            </div>
+        </div>
+        <div id="videoResults" style="display: none; width: 93.5vw;">
+            <div id="videoWrapper" class="XRL-right innerCol"
+                style="min-width: 50vw; justify-content: center; flex-direction: row; flex-wrap: wrap;">
+            </div>
+        </div>
+        <div alt="page number" class="XRL-below " style="height: 5vw; background-color: var(--color2);">
+        </div>
+    </div>
+</body>
+<script>
+    function add_elements() {
+        fill_list('results', 10, '<div alt="result ', '" class="" style="width: 65vw; height: 12vw; background-color: var(--color6);"></div>');
+        fill_list('suggested', 6, '<div alt="suggestion ', '" class="" style="width: 18vw; height: 12vw; background-color: var(--color7);"></div>');
+        fill_list('imageWrapper', 42, '<div alt="img ', '" class="" style="width: 14.75vw; height: 14.75vw; background-color: var(--color8);"></div>');
+        fill_list('videoWrapper', 35, '<div alt="vid ', '" class="" style="width: 17.9vw; height: 14.75vw; background-color: var(--color9);"></div>');
+    }
+
+    function switch_page(state) {
+        ['webResults', 'imageResults', 'videoResults'].forEach((page, index) => {
+            document.getElementById(page).style.display = index === state ? 'flex' : 'none';
+        });
+    }
+
+    let state = 0;
+    function keypress(e) {
+        switch (e.key) {
+            case '1':
+                state = (state + 1) % 3;
+                switch_page(state);
+                break;
+            case '2':
+                state = 2;
+                switch_page(2);
+                break;
+            default:
+                break;
+        }
+    }
+</script>
+<script src="thesis.js"></script>
+
+</html>

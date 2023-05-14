@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>XRL Demo | Mail</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="XRL-element">
+    <div id="content" style="display: flex; justify-content: space-between;">
+        <div id="leftMenu" class="XRL-left innerCol" style="width: 25vw;"></div>
+        <div style="display: flex; flex-direction: column;">
+            <div class="inner">
+                <div alt="search" onclick="toggle_compose()" class="XRL-head"
+                    style="width: 70vw; height: 5vw; background-color: var(--color1);">
+                </div>
+                <div id="currentMail" alt="current mail" onclick="toggle_mail()" class="XRL-right"
+                    style="display: none; width: 70vw; height: 35vw; margin-top: 1vw; background-color: var(--color2);">
+                </div>
+            </div>
+            <div id="inboxWrapper" class="inner" style="max-height: 35vw; overflow-y: auto;">
+                <div id="inbox" class="XRL-main innerCol" style="width: 70vw; padding-top: 0;"></div>
+            </div>
+            <div style="position: absolute; bottom: 0; right: 0; pointer-events: none">
+                <div id="compose" alt="compose" class="XRL-right"
+                    style="display: none; width: 40vw; height: 40vw; background-color: var(--color4);">
+                </div>
+            </div>
+            <div class="inner">
+                <div alt="inbox statistics" class="XRL-below"
+                    style="width: 70vw; height: 5vw; background-color: var(--color3);">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function toggle_mail() {
+        const toggle = document.getElementById('currentMail').style.display == "block";
+        document.getElementById('currentMail').style.display = toggle ? "none" : "block";
+        document.getElementById('inboxWrapper').style.display = toggle ? "block" : "none";
+    }
+
+    function toggle_compose() {
+        let compose = document.getElementById('compose');
+        if (compose.style.display != 'none') { compose.style.display = 'none'; display_chat = false; }
+        else { compose.style.display = 'block'; display_chat = true; }
+    }
+
+    function add_elements() {
+        fill_list('inbox', 20, '<div alt="email ', '" style="height: 5vw; background-color: var(--color5);" class="" onclick="toggle_mail()"></div>');
+        fill_list('leftMenu', 7, '<div alt="control ', '" style="height: 5vw; background-color: var(--color6);" class=""></div>');
+    }
+
+    function keypress(e) {
+        switch (e.key) {
+            case '1':
+                toggle_compose();
+                break;
+            case '2':
+                toggle_mail();
+                break;
+            case '3':
+                toggle_compose();
+                toggle_mail();
+            default:
+                break;
+        }
+    }
+</script>
+<script src="thesis.js"></script>
+
+</html>

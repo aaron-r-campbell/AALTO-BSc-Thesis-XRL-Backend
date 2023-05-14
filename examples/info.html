@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>XRL Demo | Info</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="XRL-element">
+    <div id="content" style="display: flex; flex-direction: column;">
+        <div alt="header" class="XRL-head " style="width: 62vw; height: 5vw; background-color: var(--color1);">
+        </div>
+        <div style="display: flex; column-gap: 1vw; justify-content: space-between;">
+            <div id="toc" class="XRL-left innerCol" style="width: 15vw;"></div>
+            <div class="innerCol">
+                <div alt="article text" class="XRL-main "
+                    style="width: 45vw; height: 100vw; background-color: var(--color3); display: flex; flex-direction: row-reverse;">
+                    <div alt="info card" class="XRL-right "
+                        style="width: 25vw; height: 35vw; background-color: var(--color4);">
+                    </div>
+                </div>
+                <div alt="related pages" class="XRL-below "
+                    style="width: 45vw; height: 25vw; background-color: var(--color5);">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function add_elements() {
+        fill_list('toc', 10, '<div alt="toc link ', '" class="" style="height: 5vw; background-color: var(--color2);"></div>');
+    }
+</script>
+<script src="thesis.js"></script>
+
+</html>

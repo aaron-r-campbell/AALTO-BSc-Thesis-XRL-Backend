@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>XRL Demo | Media</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="XRL-element">
+    <div id="content" style="display: flex; flex-direction: column;">
+        <div alt="header" onclick="toggle_chat()" class="XRL-head" style="width: 62vw; height: 5vw; background-color: var(--color1);">
+        </div>
+        <div alt="XRL advertisement banner" class="XRL-ignore" style="width: 50vw; height: 5vw; margin: 0.5vw auto; background-color: var(--color7);">
+        </div>
+        <div style="display: flex; justify-content: center;">
+            <div style="display: flex; flex-direction: column;">
+                <div class="inner">
+                    <div alt="player" class="XRL-main "
+                        style="width: 40vw; height: 25vw; background-color: var(--color2);"></div>
+                </div>
+                <div class="inner">
+                    <div alt="description" class="XRL-below "
+                        style="width: 40vw; height: 12vw; background-color: var(--color3);"></div>
+                </div>
+                <div class="inner">
+                    <div id="comments" class="XRL-left innerCol" style="width: 40vw; padding-top: 0;"></div>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+                <div style="max-height: 26vw; overflow-y: auto;">
+                    <div id="chat" class="XRL-right innerCol" style="width: 20vw;"></div>
+                </div>
+                <div id="suggested" class="XRL-right innerCol" style="width: 20vw;"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function toggle_chat() {
+        const chat = document.getElementById('chat');
+        if (chat.style.display != 'none') { chat.style.display = 'none'; }
+        else { chat.style.display = 'flex'; }
+    }
+
+    function add_elements() {
+        fill_list('chat', 20, '<div alt="message ', '" class="" style="height: 5vw; flex-shrink: 0; background-color: var(--color4)"></div>');
+        fill_list('comments', 15, '<div alt="comment ', '" class="" style="height: 10vw; background-color: var(--color5)"></div>');
+        fill_list('suggested', 15, '<div alt="suggestion ', '" class="" style="height: 7vw; background-color: var(--color6)"></div>');
+    }
+
+    function keypress(e) {
+        if (e.key === '1') {
+            toggle_chat()
+        }
+    }
+</script>
+<script src="thesis.js"></script>
+
+</html>
